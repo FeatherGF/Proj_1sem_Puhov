@@ -4,7 +4,7 @@
 x = input('Введите вещественное число: ')
 n = input('Введите целое число: ')
 
-while type(x) != float:
+while type(x) != float:         # обработка исключений
     try:
         x = float(x)
     except ValueError:
@@ -23,7 +23,7 @@ while type(n) != int:
 
 b = 0
 fact = 1
-for j in range(n + 1):
+for j in range(n + 1):          # проводим вычисления
     for i in range(1, (2 * j) + 1):
         fact *= i
     b += ((-1) ** j) * (x ** (2 * j)) / fact
