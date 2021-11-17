@@ -1,13 +1,10 @@
-# condition
+# Дан список размера N и целые числа K и L (1 < K < L < N). Найти среднее арифметическое элементов списка с номерами
+# от K до L включительно
 from random import randint
-n = int(input())
-my_list = [randint(1, 9) for i in range(1, n + 1)]
-k, L = int(input()), int(input())
+
+n = int(input('Введите длину списка: '))
+my_list = [randint(1, 100) for i in range(n)]  # создание списка с случайными элементами
+k, L = int(input('Введите К: ')), int(input('Введите L: '))
 sr_arif, counter = 0, 0
-print(my_list)
-for i in range(len(my_list))[k:L+1]:
-    sr_arif += i
-    counter += 1
-    print(sr_arif)
-sr_arif /= counter
-print(sr_arif, counter)
+print(sum(my_list[k - 1:L]) / len(my_list[k - 1:L]))  # вычисление суммы элементов списка на срезе от K до L
+# включительно. Затем деление на длину списка с таким же срезом. Выводящийся результат - среднее арифметическое
