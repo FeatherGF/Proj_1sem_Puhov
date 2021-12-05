@@ -11,7 +11,7 @@ print(f'Изначальная строка: {line}')
 print('Пары в словаре:')
 for key in dictionary.keys():
     print(f'\t{key}: {dictionary[key]}')
-count = 0
+count = 0  # ставлю счетчик уникальных ключей(у которых значение 1)
 for value in dictionary.values():
     if value == 1:
         count += 1
