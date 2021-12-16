@@ -4,18 +4,23 @@ import random
 
 n = int(input('Введите количество стран: '))
 brands = {'Audi', 'Tesla', 'Lamborghini', 'Mercedes', 'Mitsubishi', 'Bugatti', 'Porsche'}
-countries = [{random.choice([*brands]) for j in range(random.randint(1, len(brands) + 1))} for i in range(1, n + 1)]
+countries = {'Poland', 'Russia', 'England', 'USA', 'Argentina', 'Mexico', 'China', 'Japan', 'Thailand', 'Netherlands',
+             'Norway'}
+exports = [{random.choice([*brands]) for j in range(random.randint(1, len(brands) + 1))} for i in range(1, n + 1)]
 # Создается список, элементы которого являются множествами. Эти множества создаются генератором. Из множества brands
 # берется случайное количество раз случайная марка машины
-print('Экспортированные марки машин в разные страны:', *countries, sep='\n', end='\n' * 2)
+dictionary = dict(zip(countries, exports))  # создаю словарь ключ - страна, значение - множество марок машин этой страны
+print(*dictionary.items(), sep='\n', end='\n' * 2)
 for brand in brands:
     count = 0
-    for country in countries:  # проверка каждой марки на наличие в каждом множестве
-        if brand in country:
+    my_list = []
+    for key, value in dictionary.items():  # проверка на наличие каждой марки в каждой стране
+        if brand in dictionary[key]:
             count += 1
-    if count == len(countries):
-        print(f'{brand} экспортируется во все страны')
+            my_list.append(key)
+    if count == len(exports):
+        print(f'{brand} экспортируется во все страны:', *my_list)
     elif count > 0:
-        print(f'{brand} экспортируется только в некоторые из стран')
+        print(f'{brand} экспортируется только в некоторые из стран:', *my_list)
     else:
-        print(f'{brand} не экспортируется ни в одну страну')
+        print(f'{brand} не экспортируется ни в одну страну:')
