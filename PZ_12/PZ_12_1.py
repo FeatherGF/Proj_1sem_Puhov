@@ -7,7 +7,7 @@ root.geometry('400x400')
 var = IntVar()
 
 frame1 = LabelFrame(bd=3, text='User Login Info')
-frame1.grid(sticky=N+S+E+W)
+frame1.grid(sticky=N+S+E+W, padx=5)
 
 
 Label(frame1, text='Username:', justify='left', height=2).grid(row=1, column=1, sticky=W)
@@ -20,7 +20,7 @@ Label(frame1, text='Password:', height=2).grid(row=3, column=1, sticky=W)
 Entry(frame1, width=33).grid(row=3, column=2, columnspan=2)
 
 frame2 = LabelFrame(bd=3, text='Personal Data')
-frame2.grid(sticky=N+S+E+W)
+frame2.grid(sticky=N+S+E+W, padx=5, pady=5)
 
 Label(frame2, text='Address:', height=2).grid(row=4, column=1, sticky=W)
 Entry(frame2, width=33).grid(row=4, column=2, columnspan=2)
@@ -36,12 +36,12 @@ Radiobutton(frame2, text='Male', variable=var, value='M').grid(row=7, column=2)
 Radiobutton(frame2, text='Female', variable=var, value='F').grid(row=7, column=3)
 
 frame3 = LabelFrame(bd=3)
-frame3.grid(sticky=N+S+E+W)
+frame3.grid(sticky=N+S+E+W, padx=5)
 
 Label(frame3, height=2, text='I accept forum\'s rules').grid(row=8, column=1, columnspan=2)
 Checkbutton(frame3).grid(row=8, column=3)
 
-Button(frame3, text='Submit', width=5, height=1).grid(row=9, column=1, sticky=W)
-Button(frame3, text='Reset', width=5, height=1).grid(row=9, column=2)
+Button(frame3, text='Submit', width=5, height=1).grid(padx=5, pady=5, row=9, column=1, sticky=W)
+Button(frame3, text='Reset', width=5, height=1).grid(padx=5, pady=5, row=9, column=2)
 
 root.mainloop()
