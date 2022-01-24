@@ -25,12 +25,10 @@ root.resizable(width=False, height=False)
 
 N = StringVar()
 
-
 Label(text='Нахождение суммы по формуле: 1 ** 1 + 2 ** 2 + ... N ** N.', font='Arial 15').place(x=5, y=2)
 Label(text='Введите N:', font='Arial 15').place(x=5, y=40)
 myEntry = ttk.Entry(width=15, textvariable=N)
 myEntry.place(x=120, y=45)
-
 
 button = ttk.Button(text='Решить', command=show_solution, width=8)
 button.place(x=20, y=85)
