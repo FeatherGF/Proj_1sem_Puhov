@@ -1,30 +1,38 @@
+# Дано целое число N (> 0). Найти сумму 1 ** 1 + 2 ** 2 + ... N ** N.
 from tkinter import *
 from tkinter import messagebox, ttk
 
 
-def button_clicked():
-    return myEntry.get()
+def show_solution():
+    n = N.get()
+    try:
+        n = int(n)
+        if n <= 0:
+            messagebox.showinfo('Нахождение суммы по формуле.', 'Число не положительное!')  # обработка исключений
+    except ValueError:
+        messagebox.showinfo('Нахождение суммы по формуле.', 'Неправильно ввели целое число!')
+    if type(n) == int and n > 0:
+        a = 0
+        for i in range(1, n + 1):  # проведение расчетов
+            a += i ** i
+        messagebox.showinfo('Нахождение суммы по формуле.', f'Сумма равна: {a}')
 
 
 root = Tk()
 root.title('Нахождение суммы по формуле.')
-root.geometry("600x400")
+root.geometry("580x130+350+350")
+root.resizable(width=False, height=False)
 
-frame = Frame()
-frame.place(x=0, y=0)
-
-N = IntVar()
-
-Label(text='Нахождение суммы по формуле: 1 ** 1 + 2 ** 2 + ... N ** N.').place(in_=frame, x=5, y=2)
-Label(text='Введите N:').place(in_=frame, x=5, y=25)
-myEntry = Entry(width=15)
-myEntry.place(in_=frame, x=80, y=25)
+N = StringVar()
 
 
-button = Button(text='Submit', command=button_clicked)
-button.place(in_=frame, x=40, y=65)
+Label(text='Нахождение суммы по формуле: 1 ** 1 + 2 ** 2 + ... N ** N.', font='Arial 15').place(x=5, y=2)
+Label(text='Введите N:', font='Arial 15').place(x=5, y=40)
+myEntry = ttk.Entry(width=15, textvariable=N)
+myEntry.place(x=120, y=45)
 
-N1 = button_clicked()
-print(N1)
+
+button = ttk.Button(text='Решить', command=show_solution, width=8)
+button.place(x=20, y=85)
 
 root.mainloop()
