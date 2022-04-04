@@ -7,6 +7,7 @@ with open('writer.txt', 'r', encoding='utf-8') as inf:
 reg = re.compile(r'^(\w+\S\w+)\s\w[.,\s]\w[.,\s]', re.M)
 authors = re.findall(reg, text)
 print(f'Количество фамилий: {len(authors)}')
+print('Все фамилии писателей:', *authors)
 new_text = text.replace('роман ', 'произведение ')
 new_text = new_text.replace('романов', 'произведений')  # замена слов
 new_text = new_text.replace('романа', 'произведения')
