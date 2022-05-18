@@ -1,3 +1,7 @@
+# Приложение НОТАРИАЛЬНАЯ КОНТОРА для некоторой организации. БД
+# должна содержать таблицу Нотариальные услуги со следующей структурой записи: ФИО
+# клиента, услуга, сумма сделки, комиссионные (доход конторы).
+# БД должна обеспечивать получение информации по сумме сделки.
 import tkinter as tk
 from tkinter import ttk
 import sqlite3 as sq
@@ -37,7 +41,7 @@ class Main(tk.Frame):
         btn_search.pack(side=tk.LEFT, padx=10)
 
         self.refresh_img = tk.PhotoImage(file="images/refresh.png")
-        btn_refresh = tk.Button(toolbar, text="Обновить экран", command=self.view_records, bg='#FFB840',bd=0,
+        btn_refresh = tk.Button(toolbar, text="Обновить экран", command=self.view_records, bg='#FFB840', bd=0,
                                 compound=tk.TOP, image=self.refresh_img, padx=10)
         btn_refresh.pack(side=tk.LEFT, padx=10)
 
