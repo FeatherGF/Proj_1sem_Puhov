@@ -13,33 +13,33 @@ class Main(tk.Frame):
         self.view_records()
 
     def init_main(self):
-        toolbar = tk.Frame(bg='#F6CDA2', bd=4)
+        toolbar = tk.Frame(bg='#FFCB73', bd=4)
         toolbar.pack(side=tk.TOP, fill=tk.X)
 
         self.add_img = tk.PhotoImage(file="images/plus.png")
-        self.btn_open_dialog = tk.Button(toolbar, text='Добавить запись', command=self.open_dialog, bg='#D9715F', bd=0,
-                                         compound=tk.TOP, image=self.add_img)
-        self.btn_open_dialog.pack(side=tk.LEFT)
+        self.btn_open_dialog = tk.Button(toolbar, text='Добавить запись', command=self.open_dialog, bg='#FFB840', bd=0,
+                                         compound=tk.TOP, image=self.add_img, padx=10)
+        self.btn_open_dialog.pack(side=tk.LEFT, padx=10)
 
         self.update_img = tk.PhotoImage(file="images/edit.png")
-        btn_edit_dialog = tk.Button(toolbar, text="Редактировать", command=self.open_update_dialog, bg='#D9715F',
-                                    bd=0, compound=tk.TOP, image=self.update_img)
-        btn_edit_dialog.pack(side=tk.LEFT)
+        btn_edit_dialog = tk.Button(toolbar, text="Редактировать", command=self.open_update_dialog, bg='#FFB840', bd=0,
+                                    compound=tk.TOP, image=self.update_img, padx=10)
+        btn_edit_dialog.pack(side=tk.LEFT, padx=10)
 
         self.delete_img = tk.PhotoImage(file="images/delete.png")
-        btn_delete = tk.Button(toolbar, text="Удалить запись", command=self.delete_records, bg='#D9715F',
-                               bd=0, compound=tk.TOP, image=self.delete_img)
-        btn_delete.pack(side=tk.LEFT)
+        btn_delete = tk.Button(toolbar, text="Удалить запись", command=self.delete_records, bg='#FFB840', bd=0,
+                               compound=tk.TOP, image=self.delete_img, padx=10)
+        btn_delete.pack(side=tk.LEFT, padx=10)
 
         self.search_img = tk.PhotoImage(file="images/search.png")
-        btn_search = tk.Button(toolbar, text="Поиск записи", command=self.open_search_dialog, bg='#D9715F',
-                               bd=0, compound=tk.TOP, image=self.search_img)
-        btn_search.pack(side=tk.LEFT)
+        btn_search = tk.Button(toolbar, text="Поиск записи", command=self.open_search_dialog, bg='#FFB840', bd=0,
+                               compound=tk.TOP, image=self.search_img, padx=10)
+        btn_search.pack(side=tk.LEFT, padx=10)
 
         self.refresh_img = tk.PhotoImage(file="images/refresh.png")
-        btn_refresh = tk.Button(toolbar, text="Обновить экран", command=self.view_records, bg='#D9715F',
-                                bd=0, compound=tk.TOP, image=self.refresh_img)
-        btn_refresh.pack(side=tk.LEFT)
+        btn_refresh = tk.Button(toolbar, text="Обновить экран", command=self.view_records, bg='#FFB840',bd=0,
+                                compound=tk.TOP, image=self.refresh_img, padx=10)
+        btn_refresh.pack(side=tk.LEFT, padx=10)
 
         self.tree = ttk.Treeview(self, columns=('user_id', 'full_name', 'service', 'price', 'commission'), height=15,
                                  show='headings')
@@ -103,40 +103,40 @@ class Child(tk.Toplevel):
         self.view = app
 
     def init_child(self):
-        self.title('Добавить игрока')
+        self.title('Добавить запись')
         self.geometry('400x220+400+300')
         self.resizable(False, False)
 
         label_description = tk.Label(self, text='Номер')
         label_description.place(x=50, y=25)
-        self.entry_description = ttk.Entry(self)
+        self.entry_description = ttk.Entry(self, width=27)
         self.entry_description.place(x=150, y=25)
 
         label_name = tk.Label(self, text='ФИО')
         label_name.place(x=50, y=50)
-        self.entry_name = ttk.Entry(self)
+        self.entry_name = ttk.Entry(self, width=27)
         self.entry_name.place(x=150, y=50)
 
         label_serv = tk.Label(self, text='Услуга')
         label_serv.place(x=50, y=75)
-        self.entry_serv = ttk.Entry(self)
+        self.entry_serv = ttk.Entry(self, width=27)
         self.entry_serv.place(x=150, y=75)
 
         label_old = tk.Label(self, text='Сумма')
         label_old.place(x=50, y=100)
-        self.entry_price = ttk.Entry(self)
+        self.entry_price = ttk.Entry(self, width=27)
         self.entry_price.place(x=150, y=100)
 
         label_score = tk.Label(self, text='Комиссионные')
         label_score.place(x=50, y=125)
-        self.entry_comis = ttk.Entry(self)
+        self.entry_comis = ttk.Entry(self, width=27)
         self.entry_comis.place(x=150, y=125)
 
         btn_cancel = ttk.Button(self, text='Закрыть', command=self.destroy)
-        btn_cancel.place(x=300, y=170)
+        btn_cancel.place(x=200, y=160)
 
         self.btn_ok = ttk.Button(self, text='Добавить')
-        self.btn_ok.place(x=220, y=170)
+        self.btn_ok.place(x=120, y=160)
         self.btn_ok.bind('<Button-1>', lambda event: self.view.records(self.entry_description.get(),
                                                                        self.entry_name.get(),
                                                                        self.entry_serv.get(),
@@ -156,20 +156,20 @@ class Search(tk.Toplevel):
         self.view = app
 
     def init_search(self):
-        self.title('Поиск игрока')
-        self.geometry('320x130+400+300')
+        self.title('Поиск')
+        self.geometry('360x130+400+370')
         self.resizable(False, False)
 
-        label_search = tk.Label(self, text='Поиск')
-        label_search.place(x=50, y=50)
+        label_search = tk.Label(self, text='Поиск по сумме сделки выше указанного вами числа:')
+        label_search.place(x=20, y=20)
         self.entry_search = ttk.Entry(self, width=25)
-        self.entry_search.place(x=110, y=50)
+        self.entry_search.place(x=100, y=50)
 
         btn_cancel = ttk.Button(self, text='Закрыть', command=self.destroy)
-        btn_cancel.place(x=110, y=75)
+        btn_cancel.place(x=180, y=80)
 
         btn_ok = ttk.Button(self, text='Поиск')
-        btn_ok.place(x=190, y=75)
+        btn_ok.place(x=100, y=80)
         btn_ok.bind('<Button-1>', lambda event: self.view.search_records(self.entry_search.get()))
         btn_ok.bind('<Button-1>', lambda event: self.destroy(), add='+')
 
@@ -183,7 +183,7 @@ class Update(Child):
     def init_edit(self):
         self.title("Редактировать запись")
         btn_edit = ttk.Button(self, text="Редактировать")
-        btn_edit.place(x=205, y=170)
+        btn_edit.place(x=105, y=160)
         btn_edit.bind('<Button-1>', lambda event: self.view.update_record(self.entry_description.get(),
                                                                           self.entry_name.get(),
                                                                           self.entry_serv.get(),
@@ -217,5 +217,6 @@ if __name__ == "__main__":
     app.pack()
     root.title("Нотариальные услуги")
     root.geometry("650x450+300+200")
+    root.iconphoto(True, tk.PhotoImage(file='images/doc.png'))
     root.resizable(False, False)
     root.mainloop()
